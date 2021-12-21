@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import './App.css';
+import './Project.css';
+import Func from './Functionmsg';
+import Clmethod from './Classmsg';
+
+import React, { Component } from 'react'
+
+
+class App extends Component {
+  constructor(){
+      super();
+        this.state = {
+            msg1: false,
+            msg2: false
+        }
+}
+
+fnMsg(){
+  this.setState({msg1: !this.state.msg1 })
+}
+
+clsmsg(){
+  this.setState({msg2: !this.state.msg2 })
+}
+
+
+  render(){
+    return(
+      <div className="App">
+      <h1>Styling Using Functional and Class Component</h1>
+
+      <button className='btn' onClick={ ()=>this.fnMsg() }>Functional component styling</button>
+      <button className='btn' onClick={ ()=>this.clsmsg() }>Class component styling</button>
+
+      {
+          this.state.msg1 ? <Func/> :null
+        }
+      
+      {
+          this.state.msg2 ? <Clmethod/> :null
+        }
+      
     </div>
-  );
+    )
+  }
+
 }
 
 export default App;
